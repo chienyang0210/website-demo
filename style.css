@@ -1,0 +1,270 @@
+/* --- 基本設定與顏色變數 --- */
+:root {
+    --dark-blue: #2c3e50; /* 主要深藍色 (用於文字、標題) */
+    --light-grey: #ecf0f1; /* 淺灰色 (用於區塊背景) */
+    --accent-color: #a7dcdc; /* 淺藍綠色 (用於點綴) */
+    --white: #ffffff;
+    --grey-border: #bdc3c7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-blue);
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-blue);
+}
+
+.section-bg {
+    background-color: var(--light-grey);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    padding: 2.5rem 0 1.5rem 0;
+}
+
+/* --- 1. 導航欄 --- */
+header {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--light-grey);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* --- 2. 個人簡介區塊 (Hero) --- */
+#hero {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    min-height: 80vh;
+}
+
+.photo-placeholder {
+    width: 300px; /* 控制圓圈的寬度 */
+    height: 300px; /* 控制圓圈的高度 */
+    border-radius: 50%; /* 讓它變成圓形 */
+    background-color: var(--light-grey); /* 如果圖片載入失敗，會顯示的背景色 */
+    flex-shrink: 0;
+    overflow: hidden; /* **超出圓圈的部分會被裁切掉** */
+    background-color: transparent; /* **修改：背景色設為透明，讓圖片顯示** */
+    border: 5px solid var(--accent-color); /* 藍綠色的外框 */
+}
+
+/* **新增：這是用來控制圖片本身的樣式** */
+.photo-placeholder img {
+    width: 100%; /* 圖片寬度填滿父元素 */
+    height: 100%; /* 圖片高度填滿父元素 */
+    object-fit: cover; /* **新增：讓圖片等比例縮放，並裁切多餘部分以填滿容器** */
+    object-position: center; /* **新增：圖片內容居中顯示** */
+    display: block; /* **新增：移除圖片下方可能出現的間隙** */
+}
+
+/* .photo-placeholder img { */
+    /* width: 100%; */
+    /* height: 100%; */
+    /* object-fit: cover; */
+/* } */
+
+
+.intro-boxes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.intro-box {
+    background-color: var(--accent-color);
+    padding: 2rem;
+    border-radius: 15px;
+    min-height: 150px;
+}
+
+.intro-box-1 {
+    min-height: 200px; /* 讓第一個簡介框大一點 */
+}
+
+/* --- 3. 核心能力 (Skills) --- */
+#skills {
+    padding-bottom: 4rem;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.skill-item {
+    text-align: center;
+}
+
+.skill-chart {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+    
+    /* --percent 變數來自 HTML 的 style 屬性 */
+    background: radial-gradient(white 60%, transparent 61%),
+                conic-gradient(var(--accent-color) calc(var(--percent) * 1%), var(--grey-border) 0);
+}
+
+.skill-percent {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--dark-blue);
+}
+
+/* --- 4. 學經歷 (Experience) --- */
+#experience {
+    padding-bottom: 4rem;
+}
+
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.exp-card {
+    background-color: var(--white);
+    border: 1px solid var(--light-grey);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    width: 80%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.exp-date {
+    color: #7f8c8d; /* 灰色
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+/* --- 5. 作品集 (Portfolio) --- */
+#portfolio {
+    padding-bottom: 4rem;
+}
+
+.portfolio-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.portfolio-item {
+    width: 300px;
+}
+
+.portfolio-placeholder {
+    width: 100%;
+    height: 220px;
+    background-color: var(--white);
+    border: 1px solid var(--grey-border);
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-item a:hover .portfolio-placeholder {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* --- 6. 頁尾 --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--dark-blue);
+    color: var(--light-grey);
+}
+
+/* --- RWD 響應式設計 (手機版) --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* 導航欄 */
+    header .container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Hero 區塊 */
+    #hero {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+
+    .photo-placeholder {
+        width: 200px;
+        height: 200px;
+    }
+
+    /* 經歷卡片 */
+    .exp-card {
+        width: 100%;
+    }
+}
