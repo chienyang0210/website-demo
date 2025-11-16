@@ -1,0 +1,304 @@
+/* --- 基本設定與變數 (Variables) --- */
+:root {
+    --dark-blue: #2c3e50;   /* 深藍色：用於文字、標題 */
+    --light-grey: #ecf0f1;  /* 淺灰色：用於背景 */
+    --accent-color: #a7dcdc; /* 淺藍綠色：用於裝飾、圓圈圖表 */
+    --white: #ffffff;       /* 白色 */
+    --grey-border: #bdc3c7; /* 灰色邊框 */
+}
+
+/* 重置瀏覽器預設樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: "微軟正黑體", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-blue);
+    background-color: var(--white);
+}
+
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- 標題與區塊樣式 --- */
+.section-bg {
+    background-color: var(--light-grey); 
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+    color: var(--dark-blue);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 3rem;
+}
+
+section {
+    padding-bottom: 4rem; /* 每個區塊底部的留白 */
+}
+
+/* --- 1. 導航欄 (Header) --- */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--dark-blue);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* --- 2. 關於我 / Hero 區塊 --- */
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    min-height: 60vh; /* 讓這個區塊至少佔螢幕高度的 60% */
+}
+
+/* 照片圓形設定 */
+.photo-placeholder {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden; /* 裁切超出圓形的部分 */
+    border: 5px solid var(--accent-color); /* 藍綠色外框 */
+    flex-shrink: 0; /* 防止照片被擠壓 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持比例填滿圓形 */
+}
+
+.intro-boxes {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.intro-box {
+    background-color: var(--accent-color);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.intro-box-1 h2 {
+    margin-bottom: 1rem;
+}
+
+.intro-box-2 {
+    background-color: #bcebeb; 
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* --- 3. 技能 (Skills) --- */
+#skills {
+    padding-top: 1rem;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.skill-item {
+    text-align: center;
+    width: 160px;
+}
+
+/* 圓環圖表樣式 */
+.skill-chart {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    /* 使用 CSS 變數製作進度條效果 */
+    background: radial-gradient(var(--light-grey) 55%, transparent 56%),
+                conic-gradient(var(--accent-color) calc(var(--percent) * 1%), #bdc3c7 0);
+}
+
+.skill-percent {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--dark-blue);
+    background: transparent; /* 確保文字背景透明 */
+}
+
+/* --- 4. 個人經歷 (Experience) - 解決圖片問題的核心區塊 --- */
+#experience {
+    padding-top: 1rem;
+}
+
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+}
+
+.exp-card {
+    background-color: var(--white);
+    border: 1px solid var(--light-grey);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    
+    display: flex; /* 讓圖片和文字並排 */
+    align-items: center;
+    gap: 2rem;
+}
+
+/* 文字區塊 */
+.exp-content {
+    flex: 3; /* 文字佔 3 等份 */
+}
+
+.exp-content h3 {
+    color: var(--dark-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.exp-date {
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* 圖片區塊 - 修正圖片超出問題 */
+.exp-image {
+    flex: 2; /* 圖片佔 2 等份 */
+    height: 220px; /* 設定固定高度 */
+    border-radius: 8px;
+    overflow: hidden; /* 隱藏超出的部分 */
+    border: 1px solid #eee;
+}
+
+.exp-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 關鍵屬性：等比例裁切填滿 */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.exp-image img:hover {
+    transform: scale(1.05); /* 滑鼠移過去有微微放大的效果 */
+}
+
+/* 反轉排版 (圖片在左，文字在右) */
+.exp-card.reverse-layout {
+    flex-direction: row-reverse;
+}
+
+/* --- 5. 聯絡資訊 (Footer) --- */
+footer {
+    background-color: var(--dark-blue);
+    color: var(--light-grey);
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 2rem;
+}
+
+footer h2 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-link {
+    color: var(--white);
+    border: 1px solid var(--accent-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-blue);
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
